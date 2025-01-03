@@ -17,8 +17,12 @@ const timerSlice = createSlice({
   name: "timer",
   initialState,
   reducers: {
-    toggleTimer: (state) => {
-      state.isRunning = !state.isRunning;
+    startTimer: (state) => {
+      state.isRunning = true;
+    },
+    stopTimer: (state) => {
+      state.isRunning = false;
+      state.timeLeft = POMO_CONST.WORK_TIME;
     },
     setMode: (state, action) => {
       switch (action.payload) {
@@ -44,5 +48,5 @@ const timerSlice = createSlice({
   }
 })
 
-export const { toggleTimer, setMode, tick } = timerSlice.actions;
+export const { startTimer, stopTimer, setMode, tick } = timerSlice.actions;
 export default timerSlice.reducer;

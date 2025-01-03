@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AVPlaybackSource } from "expo-av/build/AV";
 
-type Track = {
+export type Track = {
   id: string;
   title: string;
   source: AVPlaybackSource;
@@ -17,7 +17,7 @@ const initialState: EdmState = {
   currentTrack: {
     id: "1",
     title: "DOCTOR VOX - Frontier",
-    source: require("../../assets/edm/DOCTOR_VOX_-_Frontier.mp3"),
+    source: require("../../assets/playlists/DOCTOR VOX/DOCTOR VOX - Frontier.mp3"),
     bpm: 128,
   },
   bpm: 128,
@@ -33,8 +33,11 @@ const edmSlice = createSlice({
     setBpm: (state, action: PayloadAction<number>) => {
       state.bpm = action.payload;
     },
+    resetTrack: (state) => {
+      state.currentTrack = null;
+    }
   },
 });
 
-export const { setTrack, setBpm } = edmSlice.actions;
+export const { setTrack, setBpm, resetTrack } = edmSlice.actions;
 export default edmSlice.reducer;

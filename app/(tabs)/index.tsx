@@ -1,38 +1,52 @@
-import { Image, StyleSheet, Platform } from 'react-native';
-
-import ParallaxScrollView from '@/components/ParallaxScrollView';
+import { StyleSheet } from 'react-native';
 import TimerControls from '@/components/Timer/TimerControls';
 import TimerDisplay from '@/components/Timer/TimerDisplay';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import { toggleTimer } from '@/store/reducers/timerSlice';
+import { setMode, startTimer, stopTimer } from '@/store/reducers/timerSlice';
 import EdmDisplay from '@/components/SongPlayer/EdmDisplay';
+import { ThemedView } from '@/components/ThemedView';
+import { playlists } from '@/data/generated-playlists';
+import { setPlaylist } from '@/store/reducers/playlistSlice';
 
 export default () => {
   const dispatch = useDispatch();
+  const { playlist } = useSelector((state: RootState) => state.playlist);
   const { timeLeft, isRunning, mode } = useSelector((state: RootState) => state.timer);
+  const { currentTrack } = useSelector((state: RootState) => state.edm);
+
+  const handleStart = () => {
+    if (!playlist) {
+      const randomIndex = Math.floor(Math.random() * playlists.length);
+      dispatch(setPlaylist(playlists[randomIndex]));
+    }
+    dispatch(startTimer());
+  }
+
+  const handleStop = () => {
+    dispatch(stopTimer());
+    dispatch(setMode("work"));
+  }
 
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <EdmDisplay title="ArgoFox BPM 120 Sample" bpm={120} />
+    <ThemedView style={styles.container}>
+      <EdmDisplay playlistTitle={playlist?.title ?? "No Playlist"} trackTitle={currentTrack?.title ?? "No Title"} bpm={currentTrack?.bpm ?? 0} />
       <TimerDisplay minutes={Math.floor(timeLeft / 60)} seconds={timeLeft % 60} phase={mode === "work" ? "focus" : "break"} />
       <TimerControls
         isRunning={isRunning}
-        onStart={() => dispatch(toggleTimer())}
-        onStop={() => dispatch(toggleTimer())}
+        onStart={handleStart}
+        onStop={handleStop}
       />
-    </ParallaxScrollView>
+    </ThemedView>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   titleContainer: {
     flexDirection: 'row',
     alignItems: 'center',

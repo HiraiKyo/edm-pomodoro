@@ -48,10 +48,13 @@ const styles = StyleSheet.create({
   timerText: {
     fontSize: 72,
     fontWeight: 'bold',
+    lineHeight: 72,
   },
   phaseText: {
     fontSize: 24,
+    lineHeight: 32,
     marginTop: 8,
+
   },
 });
 

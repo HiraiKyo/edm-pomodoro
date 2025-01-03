@@ -3,6 +3,18 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const STORAGE_KEY = "@pomo_history";
 
+export const loadHistory = createAsyncThunk(
+  "history/load",
+  async () => {
+    const stored = await AsyncStorage.getItem(STORAGE_KEY);
+    return stored ? JSON.parse(stored) : [];
+  }
+)
+
+const saveHistory = async (sessions: PomoSession[]) => {
+  await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(sessions));
+}
+
 export type PomoSession = {
   id: string;
   startAt: number;
@@ -29,23 +41,12 @@ const historySlice = createSlice({
       saveHistory(state.sessions);
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(loadHistory.fulfilled, (state, action) => {
+      state.sessions = action.payload;
+    })
+  }
 });
-
-export const loadHistory = createAsyncThunk(
-  "history/load",
-  async () => {
-    const stored = await AsyncStorage.getItem(STORAGE_KEY);
-    return stored ? JSON.parse(stored) : [];
-  }
-)
-
-export const saveHistory = createAsyncThunk(
-  "history/save",
-  async (sessions: PomoSession[]) => {
-    await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(sessions));
-    return sessions;
-  }
-);
 
 export const { addSession } = historySlice.actions;
 export default historySlice.reducer;

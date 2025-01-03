@@ -1,11 +1,14 @@
+import { playlists } from "@/data/generated-playlists";
 import { RootState } from "@/store";
-import { tick, setMode, toggleTimer } from "@/store/reducers/timerSlice";
+import { resetPlaylist } from "@/store/reducers/playlistSlice";
+import { tick, setMode, startTimer, stopTimer } from "@/store/reducers/timerSlice";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export default () => {
   const dispatch = useDispatch();
   const { isRunning, timeLeft, mode } = useSelector((state: RootState) => state.timer);
+  const { playlist } = useSelector((state: RootState) => state.playlist);
 
   /** Tick */
   useEffect(() => {
@@ -24,15 +27,15 @@ export default () => {
   useEffect(() => {
     if(timeLeft === 0) {
       if(mode === "work") {
-        dispatch(toggleTimer());
         dispatch(setMode("shortBreak"));
-        dispatch(toggleTimer());
+        dispatch(resetPlaylist());
       } else {
-        dispatch(toggleTimer());
         dispatch(setMode("work"));
-        dispatch(toggleTimer());
+        if(!playlist) {
+          dispatch(stopTimer());
+        }
       }
     }
-  }, [timeLeft, dispatch])
+  }, [timeLeft, playlist, dispatch])
   return null;
 }
