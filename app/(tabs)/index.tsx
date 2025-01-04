@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, useColorScheme } from 'react-native';
 import TimerControls from '@/components/Timer/TimerControls';
 import TimerDisplay from '@/components/Timer/TimerDisplay';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,8 +8,13 @@ import EdmDisplay from '@/components/SongPlayer/EdmDisplay';
 import { ThemedView } from '@/components/ThemedView';
 import { playlists } from '@/data/generated-playlists';
 import { setPlaylist } from '@/store/reducers/playlistSlice';
+import { IconSymbol } from '@/components/ui/IconSymbol';
+import { Colors } from '@/constants/Colors';
+import { Link } from 'expo-router';
 
 export default () => {
+  const colorScheme = useColorScheme();
+
   const dispatch = useDispatch();
   const { playlist } = useSelector((state: RootState) => state.playlist);
   const { timeLeft, isRunning, mode } = useSelector((state: RootState) => state.timer);
@@ -30,6 +35,9 @@ export default () => {
 
   return (
     <ThemedView style={styles.container}>
+      <Link href="/settings" style={styles.settingsLink}>
+        <IconSymbol name="gearshape.fill" size={48} color={Colors[colorScheme ?? "light"].icon} />
+      </Link>
       <EdmDisplay playlistTitle={playlist?.title ?? "No Playlist"} trackTitle={currentTrack?.title ?? "No Title"} bpm={currentTrack?.bpm ?? 0} />
       <TimerDisplay minutes={Math.floor(timeLeft / 60)} seconds={timeLeft % 60} phase={mode === "work" ? "focus" : "break"} />
       <TimerControls
@@ -62,5 +70,10 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     position: 'absolute',
+  },
+  settingsLink: {
+    position: 'absolute',
+    top: 16,
+    right: 16,
   },
 });

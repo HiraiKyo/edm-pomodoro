@@ -16,6 +16,7 @@ const MAPPING = {
   'chevron.right': 'chevron-right',
   'play.circle': 'play-circle',
   'pause.circle': 'pause-circle',
+  "gearshape.fill": "settings",
 } as Partial<
   Record<
     import('expo-symbols').SymbolViewProps['name'],

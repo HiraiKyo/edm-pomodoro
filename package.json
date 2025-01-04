@@ -10,7 +10,8 @@
     "web": "expo start --web",
     "test": "jest --watchAll",
     "lint": "expo lint",
-    "generate-playlists": "node ./scripts/generate-playlist.js"
+    "generate-playlists": "node ./scripts/generate-playlist.js",
+    "generate-license": "license-checker --production --json --out --direct ./data/license.json"
   },
   "jest": {
     "preset": "jest-expo"
