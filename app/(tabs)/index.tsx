@@ -11,6 +11,7 @@ import { setPlaylist } from '@/store/reducers/playlistSlice';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import { Colors } from '@/constants/Colors';
 import { Link } from 'expo-router';
+import SettingLink from '@/components/SettingLink';
 
 export default () => {
   const colorScheme = useColorScheme();
@@ -35,16 +36,16 @@ export default () => {
 
   return (
     <ThemedView style={styles.container}>
-      <Link href="/settings" style={styles.settingsLink}>
-        <IconSymbol name="gearshape.fill" size={48} color={Colors[colorScheme ?? "light"].icon} />
-      </Link>
-      <EdmDisplay playlistTitle={playlist?.title ?? "No Playlist"} trackTitle={currentTrack?.title ?? "No Title"} bpm={currentTrack?.bpm ?? 0} />
-      <TimerDisplay minutes={Math.floor(timeLeft / 60)} seconds={timeLeft % 60} phase={mode === "work" ? "focus" : "break"} />
-      <TimerControls
-        isRunning={isRunning}
-        onStart={handleStart}
-        onStop={handleStop}
-      />
+      <SettingLink />
+      <ThemedView>
+        <EdmDisplay playlistTitle={playlist?.title ?? "No Playlist"} trackTitle={currentTrack?.title ?? "No Title"} bpm={currentTrack?.bpm ?? 128} />
+        <TimerDisplay minutes={Math.floor(timeLeft / 60)} seconds={timeLeft % 60} phase={mode === "work" ? "focus" : "break"} />
+        <TimerControls
+          isRunning={isRunning}
+          onStart={handleStart}
+          onStop={handleStop}
+        />
+      </ThemedView>
     </ThemedView>
   );
 }

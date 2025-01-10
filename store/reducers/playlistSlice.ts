@@ -33,6 +33,8 @@ const playlistSlice = createSlice({
         return;
       }
       if (state.currentIndex + 1 >= state.playlist.tracks.length) {
+        // デフォルトでループ再生
+        state.currentIndex = 0;
         return;
       }
       state.currentIndex = (state.currentIndex + 1) % state.playlist.tracks.length;

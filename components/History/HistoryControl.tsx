@@ -8,7 +8,7 @@ import { POMO_CONST } from "@/constants/Pomo";
 export default () => {
   const dispatch: AppDispatch = useDispatch();
   const { timeLeft, mode } = useSelector((state: RootState) => state.timer);
-  const { currentTrack } = useSelector((state: RootState) => state.edm);
+  const { playlist } = useSelector((state: RootState) => state.playlist);
 
   useEffect(() => {
     dispatch(loadHistory());
@@ -25,7 +25,10 @@ export default () => {
           startAt: endAt.getTime() - duration,
           endAt: endAt.getTime(),
           duration: POMO_CONST.WORK_TIME,
-          edmTrackId: currentTrack ? currentTrack.id : "",
+          playlist: {
+            id: playlist?.id ?? "",
+            title: playlist?.title ?? "",
+          }
         }
         dispatch(addSession(session));
       }

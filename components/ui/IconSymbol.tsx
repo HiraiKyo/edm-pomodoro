@@ -17,6 +17,7 @@ const MAPPING = {
   'play.circle': 'play-circle',
   'pause.circle': 'pause-circle',
   "gearshape.fill": "settings",
+  "music.house": "queue-music",
 } as Partial<
   Record<
     import('expo-symbols').SymbolViewProps['name'],
@@ -36,12 +37,14 @@ export function IconSymbol({
   size = 24,
   color,
   style,
+  className
 }: {
   name: IconSymbolName;
   size?: number;
   color: string | OpaqueColorValue;
   style?: StyleProp<TextStyle>;
+  className?: string;
   weight?: SymbolWeight;
 }) {
-  return <MaterialIcons color={color} size={size} name={MAPPING[name]} style={style} />;
+  return <MaterialIcons className={className} color={color} size={size} name={MAPPING[name]} style={style} />;
 }

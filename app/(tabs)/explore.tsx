@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, useColorScheme } from 'react-native';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { IconSymbol } from '@/components/ui/IconSymbol';
@@ -8,8 +8,10 @@ import { useCallback } from 'react';
 import { Playlist } from '@/store/reducers/playlistSlice';
 import { useDispatch } from 'react-redux';
 import { setPlaylist } from '@/store/reducers/playlistSlice';
+import { Colors } from '@/constants/Colors';
 
 export default () => {
+  const colorScheme = useColorScheme();
   const dispatch = useDispatch();
 
   const handleSelect = useCallback((playlist: Playlist) => {
@@ -18,12 +20,13 @@ export default () => {
 
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
+      title="Explore"
+      headerBackgroundColor={Colors[colorScheme ?? "light"].background}
       headerImage={
         <IconSymbol
           size={310}
-          color="#808080"
-          name="chevron.left.forwardslash.chevron.right"
+          color={Colors[colorScheme ?? "light"].accent}
+          name="paperplane.fill"
           style={styles.headerImage}
         />
       }>
@@ -37,7 +40,6 @@ export default () => {
 
 const styles = StyleSheet.create({
   headerImage: {
-    color: '#808080',
     bottom: -90,
     left: -35,
     position: 'absolute',

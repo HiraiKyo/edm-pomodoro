@@ -13,6 +13,7 @@ import { store } from '@/store';
 import TickControl from '@/components/Timer/TickControl';
 import EdmControl from '@/components/SongPlayer/EdmControl';
 import HistoryControl from '@/components/History/HistoryControl';
+import SettingLink from '@/components/SettingLink';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -45,6 +46,7 @@ export default function RootLayout() {
           <Stack.Screen name="term-of-use" options={{ title: "Term of Use", presentation: "modal" }} />
           <Stack.Screen name="app-info" options={{ title: "App Info", presentation: "modal" }} />
           <Stack.Screen name="privacy-policy" options={{ title: "Privacy Policy", presentation: "modal" }} />
+          <Stack.Screen name="credits" options={{ title: "Credits", presentation: "modal" }} />
         </Stack>
         <StatusBar style="auto" />
         <TickControl />

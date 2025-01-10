@@ -40,6 +40,78 @@ export const playlists: Playlist[] = [
     ]
   },
   {
+    "id": "argofox-best-of-2018",
+    "title": "Argofox Best of 2018",
+    "tracks": [
+      {
+        "id": "canonblade---chasing-reality--argofox-release-",
+        "title": "Chasing Reality",
+        source: require("../assets/playlists/Argofox Best of 2018/Canonblade - Chasing Reality [Argofox Release].mp3"),
+        "bpm": 128
+      },
+      {
+        "id": "doctor-vox---paranoid-empire--argofox-release-",
+        "title": "Paranoid Empire",
+        source: require("../assets/playlists/Argofox Best of 2018/DOCTOR VOX - Paranoid Empire [Argofox Release].mp3"),
+        "bpm": 128
+      },
+      {
+        "id": "ghost-n-ghost---lazy-sunday--argofox-release-",
+        "title": "Lazy Sunday",
+        source: require("../assets/playlists/Argofox Best of 2018/Ghost'n'Ghost - Lazy Sunday [Argofox Release].mp3"),
+        "bpm": 128
+      },
+      {
+        "id": "hexalyte---apollo--argofox-release-",
+        "title": "Apollo",
+        source: require("../assets/playlists/Argofox Best of 2018/Hexalyte - Apollo [Argofox Release].mp3"),
+        "bpm": 128
+      },
+      {
+        "id": "inova---isolation--argofox-release-",
+        "title": "Isolation",
+        source: require("../assets/playlists/Argofox Best of 2018/Inova - Isolation [Argofox Release].mp3"),
+        "bpm": 128
+      },
+      {
+        "id": "meizong---yeeflex---sunrise--argofox-release-",
+        "title": "Sunrise",
+        source: require("../assets/playlists/Argofox Best of 2018/Meizong & Yeeflex - Sunrise [Argofox Release].mp3"),
+        "bpm": 128
+      },
+      {
+        "id": "neoh----astral--argofox-release-",
+        "title": "Astral",
+        source: require("../assets/playlists/Argofox Best of 2018/NeOH! - Astral [Argofox Release].mp3"),
+        "bpm": 128
+      },
+      {
+        "id": "rewayde---dreams--argofox-release-",
+        "title": "Dreams",
+        source: require("../assets/playlists/Argofox Best of 2018/Rewayde - Dreams [Argofox Release].mp3"),
+        "bpm": 128
+      },
+      {
+        "id": "thediabolicalwaffle---excalibur--argofox-release---1-",
+        "title": "Excalibur  (1)",
+        source: require("../assets/playlists/Argofox Best of 2018/TheDiabolicalWaffle - Excalibur [Argofox Release] (1).mp3"),
+        "bpm": 128
+      },
+      {
+        "id": "viilo---starry-night--argofox-release-",
+        "title": "Starry Night",
+        source: require("../assets/playlists/Argofox Best of 2018/Viilo - Starry Night [Argofox Release].mp3"),
+        "bpm": 128
+      },
+      {
+        "id": "yttrium---inspire--argofox-release-",
+        "title": "Inspire",
+        source: require("../assets/playlists/Argofox Best of 2018/Yttrium - Inspire [Argofox Release].mp3"),
+        "bpm": 128
+      }
+    ]
+  },
+  {
     "id": "doctor-vox",
     "title": "DOCTOR VOX",
     "tracks": [
@@ -82,6 +154,42 @@ export const playlists: Playlist[] = [
     ]
   },
   {
+    "id": "diabolicalwaffle",
+    "title": "DiabolicalWaffle",
+    "tracks": [
+      {
+        "id": "thediabolicalwaffle---ashes--argofox-release-",
+        "title": "Ashes",
+        source: require("../assets/playlists/DiabolicalWaffle/TheDiabolicalWaffle - Ashes [Argofox Release].mp3"),
+        "bpm": 128
+      },
+      {
+        "id": "thediabolicalwaffle---catalyst--argofox-release-",
+        "title": "Catalyst",
+        source: require("../assets/playlists/DiabolicalWaffle/TheDiabolicalWaffle - Catalyst [Argofox Release].mp3"),
+        "bpm": 128
+      },
+      {
+        "id": "thediabolicalwaffle---excalibur--argofox-release-",
+        "title": "Excalibur",
+        source: require("../assets/playlists/DiabolicalWaffle/TheDiabolicalWaffle - Excalibur [Argofox Release].mp3"),
+        "bpm": 128
+      },
+      {
+        "id": "thediabolicalwaffle---heroes--argofox-release-",
+        "title": "Heroes",
+        source: require("../assets/playlists/DiabolicalWaffle/TheDiabolicalWaffle - Heroes [Argofox Release].mp3"),
+        "bpm": 128
+      },
+      {
+        "id": "thediabolicalwaffle---my-wish--argofox-release-",
+        "title": "My Wish",
+        source: require("../assets/playlists/DiabolicalWaffle/TheDiabolicalWaffle - My Wish [Argofox Release].mp3"),
+        "bpm": 128
+      }
+    ]
+  },
+  {
     "id": "inova",
     "title": "Inova",
     "tracks": [
@@ -119,6 +227,42 @@ export const playlists: Playlist[] = [
         "id": "inova---unfold--argofox-release-",
         "title": "Unfold",
         source: require("../assets/playlists/Inova/Inova - Unfold [Argofox Release].wav"),
+        "bpm": 128
+      }
+    ]
+  },
+  {
+    "id": "inova-passion-ep",
+    "title": "Inova Passion EP",
+    "tracks": [
+      {
+        "id": "inova---8-bit-shuffle--argofox-release-",
+        "title": "8-Bit Shuffle",
+        source: require("../assets/playlists/Inova Passion EP/Inova - 8-Bit Shuffle [Argofox Release].mp3"),
+        "bpm": 128
+      },
+      {
+        "id": "inova---immortal--argofox-release-",
+        "title": "Immortal",
+        source: require("../assets/playlists/Inova Passion EP/Inova - Immortal [Argofox Release].mp3"),
+        "bpm": 128
+      },
+      {
+        "id": "inova---octane--argofox-release-",
+        "title": "Octane",
+        source: require("../assets/playlists/Inova Passion EP/Inova - Octane [Argofox Release].mp3"),
+        "bpm": 128
+      },
+      {
+        "id": "inova---passion--argofox-release-",
+        "title": "Passion",
+        source: require("../assets/playlists/Inova Passion EP/Inova - Passion [Argofox Release].mp3"),
+        "bpm": 128
+      },
+      {
+        "id": "inova---route--argofox-release-",
+        "title": "Route",
+        source: require("../assets/playlists/Inova Passion EP/Inova - Route [Argofox Release].mp3"),
         "bpm": 128
       }
     ]
@@ -221,6 +365,42 @@ export const playlists: Playlist[] = [
         "id": "tom-spander---time-skip--argofox-release-",
         "title": "Time Skip",
         source: require("../assets/playlists/Tom Spander/Tom Spander - Time Skip [Argofox Release].wav"),
+        "bpm": 128
+      }
+    ]
+  },
+  {
+    "id": "viilo",
+    "title": "Viilo",
+    "tracks": [
+      {
+        "id": "viilo---descend--argofox-release-",
+        "title": "Descend",
+        source: require("../assets/playlists/Viilo/Viilo - Descend [Argofox Release].wav"),
+        "bpm": 128
+      },
+      {
+        "id": "viilo---dreamwalker--argofox-release-",
+        "title": "Dreamwalker",
+        source: require("../assets/playlists/Viilo/Viilo - Dreamwalker [Argofox Release].wav"),
+        "bpm": 128
+      },
+      {
+        "id": "viilo---gem",
+        "title": "Gem",
+        source: require("../assets/playlists/Viilo/Viilo - Gem.wav"),
+        "bpm": 128
+      },
+      {
+        "id": "viilo---monochrome",
+        "title": "Monochrome",
+        source: require("../assets/playlists/Viilo/Viilo - Monochrome.wav"),
+        "bpm": 128
+      },
+      {
+        "id": "viilo---new-horizons--argofox-release-",
+        "title": "New Horizons",
+        source: require("../assets/playlists/Viilo/Viilo - New Horizons [Argofox Release].wav"),
         "bpm": 128
       }
     ]

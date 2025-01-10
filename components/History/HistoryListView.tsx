@@ -1,31 +1,47 @@
-import { PomoSession } from "@/store/reducers/historySlice"
-import { ThemedText } from "../ThemedText"
-import { ThemedView } from "../ThemedView"
-import { FlashList, ListRenderItem } from "@shopify/flash-list"
-import { StyleSheet } from "react-native"
+import { PomoSession } from "@/store/reducers/historySlice";
+import { ThemedText } from "../ThemedText";
+import { ThemedView } from "../ThemedView";
+import { FlashList, ListRenderItem } from "@shopify/flash-list";
+import { StyleSheet } from "react-native";
+import { Colors } from "@/constants/Colors";
+import { useColorScheme } from "@/hooks/useColorScheme";
 
 export default ({ sessions }: { sessions: PomoSession[]}) => {
+  const colorScheme = useColorScheme();
+
+  const renderItem = ({ item }: { item: PomoSession }) => (
+    <HistoryListItem item={item} />
+  );
+
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView style={[styles.container, { backgroundColor: Colors[colorScheme ?? "light"].background }]}>
       <FlashList
-        data={sessions}
-        renderItem={HistoryListItem}
+        style={styles.list}
+        data={[...sessions].reverse()}
+        renderItem={renderItem}
         estimatedItemSize={50}
-        contentContainerStyle={styles.listContainer}
       />
     </ThemedView>
   )
 }
 
-const HistoryListItem: ListRenderItem<PomoSession> = ({ item }: { item: PomoSession }) => {
+const HistoryListItem = ({ item }: { item: PomoSession }) => {
+  const colorScheme = useColorScheme();
+
   return (
-    <ThemedView style={styles.historyItem}>
-      <ThemedView style={styles.leftContent}>
-        <ThemedText style={styles.date}>{new Date(item.startAt).toLocaleDateString()}</ThemedText>
-        <ThemedText style={styles.date}>{new Date(item.endAt).toLocaleDateString()}</ThemedText>
+    <ThemedView style={[
+      styles.item,
+      {
+        backgroundColor: Colors[colorScheme ?? "light"].backgroundsub,
+        borderLeftColor: Colors[colorScheme ?? "light"].accent3,
+      }
+    ]}>
+      <ThemedView style={styles.dateContainer}>
+        <ThemedText style={styles.dateText}>{new Date(item.startAt).toLocaleString()}</ThemedText>
       </ThemedView>
-      <ThemedView style={styles.rightContent}>
-        <ThemedText style={styles.edmTrack}>{item.edmTrackId}</ThemedText>
+      <ThemedView style={styles.playlistContainer}>
+        <ThemedText style={styles.playlistId}>{item.playlist?.id ?? "No record"}</ThemedText>
+        <ThemedText style={styles.playlistTitle}>{item.playlist?.title ?? "No record"}</ThemedText>
       </ThemedView>
     </ThemedView>
   )
@@ -34,48 +50,46 @@ const HistoryListItem: ListRenderItem<PomoSession> = ({ item }: { item: PomoSess
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 32,
   },
-  listContainer: {
-    padding: 16,
-  },
-  historyItem: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 16,
-    backgroundColor: 'white',
-    marginBottom: 8,
-    borderRadius: 8,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.2,
-    shadowRadius: 2,
-    elevation: 2,
-  },
-  leftContent: {
+  list: {
     flex: 1,
   },
-  rightContent: {
-    alignItems: 'flex-end',
+  item: {
+    padding: 16,
+    marginHorizontal: 16,
+    marginVertical: 8,
+    borderRadius: 12,
+    borderLeftWidth: 4,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3.84,
+    elevation: 3,
   },
-  taskName: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 4,
+  dateContainer: {
+    marginBottom: 8,
   },
-  date: {
+  dateText: {
     fontSize: 12,
-    color: '#666',
+    color: '#888',
+    letterSpacing: 0.5,
   },
-  edmTrack: {
+  playlistContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  playlistId: {
     fontSize: 14,
-    marginBottom: 4,
+    fontWeight: '600',
+    color: '#00ffcc',
   },
-  completed: {
-    backgroundColor: '#E8F5E9',
-    color: '#2E7D32',
-  },
-  incomplete: {
-    backgroundColor: '#FFEBEE',
-    color: '#C62828',
+  playlistTitle: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: '#fff',
   },
 });

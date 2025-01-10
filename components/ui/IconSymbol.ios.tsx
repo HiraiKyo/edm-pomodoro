@@ -6,12 +6,14 @@ export function IconSymbol({
   size = 24,
   color,
   style,
+  className,
   weight = 'regular',
 }: {
   name: SymbolViewProps['name'];
   size?: number;
   color: string;
   style?: StyleProp<ViewStyle>;
+  className?: string;
   weight?: SymbolWeight;
 }) {
   return (
@@ -27,6 +29,7 @@ export function IconSymbol({
         },
         style,
       ]}
+      className={className}
     />
   );
 }

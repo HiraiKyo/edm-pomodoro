@@ -3,6 +3,8 @@ import { StyleSheet, TouchableOpacity } from 'react-native';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { IconSymbol } from '@/components/ui/IconSymbol';
+import { RootState } from '@/store';
+import { useSelector } from 'react-redux';
 
 interface TimerControlsProps {
   isRunning: boolean;
@@ -15,8 +17,11 @@ const TimerControls: React.FC<TimerControlsProps> = ({
   onStart,
   onStop
 }) => {
+  const { playlist } = useSelector((state: RootState) => state.playlist);
+
   return (
     <ThemedView style={styles.container}>
+      <ThemedView style={styles.actionContainer}>
       {!isRunning ? (
         <TouchableOpacity onPress={onStart}>
           <IconSymbol
@@ -34,12 +39,18 @@ const TimerControls: React.FC<TimerControlsProps> = ({
           />
         </TouchableOpacity>
       )}
+      </ThemedView>
+      {!playlist && <ThemedText style={styles.description}>Playlist is randomly selected.</ThemedText>}
     </ThemedView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: 'center',
+    gap: 8
+  },
+  actionContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -47,7 +58,11 @@ const styles = StyleSheet.create({
   },
   resetButton: {
     marginLeft: 20,
-  }
+  },
+  description: {
+    fontSize: 16,
+    lineHeight: 20,
+  },
 });
 
 export default TimerControls;

@@ -36,6 +36,11 @@ export default function SettingsScreen() {
           License
         </ThemedText>
       </Link>
+      <Link href="/credits" style={styles.settingItem}>
+        <ThemedText>
+          Credits
+        </ThemedText>
+      </Link>
     </ThemedView>
   );
 }

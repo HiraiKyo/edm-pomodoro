@@ -1,5 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Playlist } from "./playlistSlice";
 
 const STORAGE_KEY = "@pomo_history";
 
@@ -20,7 +21,10 @@ export type PomoSession = {
   startAt: number;
   endAt: number;
   duration: number;
-  edmTrackId: string;
+  playlist: {
+    id: string;
+    title: string;
+  };
 }
 
 interface HistoryState {
