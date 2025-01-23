@@ -16,7 +16,6 @@ export default ({ sessions }: { sessions: PomoSession[]}) => {
   return (
     <ThemedView style={[styles.container, { backgroundColor: Colors[colorScheme ?? "light"].background }]}>
       <FlashList
-        style={styles.list}
         data={[...sessions].reverse()}
         renderItem={renderItem}
         estimatedItemSize={50}
@@ -51,9 +50,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 32,
-  },
-  list: {
-    flex: 1,
   },
   item: {
     padding: 16,

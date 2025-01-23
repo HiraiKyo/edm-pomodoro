@@ -14,13 +14,15 @@
         "UIBackgroundModes": [
           "audio"
         ]
-      }
+      },
+      "bundleIdentifier": "com.yoritech.edmpomodoro"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.yoritech.edmpomodoro"
     },
     "web": {
       "bundler": "metro",
@@ -42,6 +44,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "ed3669b3-2510-4065-abcc-376082bcf1dc"
+      }
+    },
+    "owner": "yoritech"
   }
 }

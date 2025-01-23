@@ -66,7 +66,7 @@ const PlaylistListItem = ({
           <ThemedText style={styles.playlistName}>{item.title}</ThemedText>
           <ThemedView style={styles.tracks}>
             {item.tracks.map(track => (
-                <ThemedText style={styles.playlistDescription}>{track.title}</ThemedText>
+                <ThemedText key={track.id} style={styles.playlistDescription}>{track.title}</ThemedText>
             ))}
           </ThemedView>
         </ThemedView>
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   },
   pressable: {
     marginHorizontal: CommonStyle.spacing[2],
-    marginVertical: CommonStyle.spacing[1],
+    marginVertical: CommonStyle.spacing[2],
   },
   playlistItem: {
     position: "relative",
