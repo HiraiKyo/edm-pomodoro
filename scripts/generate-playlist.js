@@ -3,7 +3,7 @@ const path = require('path');
 const mm = require('music-metadata');
 
 const ASSETS_DIR = path.join(__dirname, '../assets');
-const PLAYLISTS_DIR = path.join(ASSETS_DIR, 'playlists');
+const PLAYLISTS_DIR = path.join(ASSETS_DIR, 'playlists-mp3');
 const OUTPUT_FILE = path.join(__dirname, "../data/generated-playlists.ts");
 
 // Utility functions

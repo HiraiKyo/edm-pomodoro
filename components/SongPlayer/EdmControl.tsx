@@ -1,7 +1,7 @@
 import { RootState } from "@/store";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Audio, AVPlaybackStatus } from "expo-av";
+import { useAudioPlayer } from "expo-audio";
 import { resetTrack, setTrack } from "@/store/reducers/edmSlice";
 import { nextTrack } from "@/store/reducers/playlistSlice";
 
@@ -14,7 +14,7 @@ export default () => {
   const { isRunning, mode } = useSelector((state: RootState) => state.timer);
   const { currentTrack } = useSelector((state: RootState) => state.edm);
 
-  const [sound, setSound] = useState<Audio.Sound | null>(null);
+  const player = useAudioPlayer(currentTrack?.source)
 
   // プレイリストに対応したトラックを設定する
   useEffect(() => {
